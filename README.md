@@ -9,6 +9,9 @@
 
 This is an app that utilizes the power of FFMPEG to convert files from one type to another and compress files
 
+This app is all thanks to FFMPEG. You can find out everything about it here: 
+https://ffmpeg.org/
+
 
 ## How to install it?
 
@@ -19,12 +22,12 @@ Desktop user$ git clone https://github.com/davidthurman/HEVC-Compression-Convers
 
 2.CD to the cloned directory
 ```
-cd HEVCApp/
+Desktop user$ cd HEVCApp/
 ```
 
 3.Run the program with Python3
 ```
-python3 gui.py
+HEVCApp user$ python3 gui.py
 ```
 
 ## Compressing:
