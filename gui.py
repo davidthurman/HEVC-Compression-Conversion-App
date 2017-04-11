@@ -20,7 +20,6 @@ def changeFileType(btn):
 	newFileType = str(app.getOptionBox("New File Type"))
 	fileName = str(app.getLabel("fileName"))
 	if newFileType != "None" and fileName != "filename":
-		print("Test")
 		app.setLabelBg("status", "Khaki")
 		app.setLabel("status", "Converting")
 		os.system("ffmpeg -i " + fileName + " " + fileName + "." + newFileType)
@@ -30,7 +29,6 @@ def changeFileType(btn):
 def compress(btn):
 	fileName = str(app.getLabel("fileName"))
 	if fileName != "filename":
-		print("Test")
 		speed = str(app.getOptionBox("Speed"))
 		print(speed)
 		fileType = str(app.getLabel("currentFileType"))
