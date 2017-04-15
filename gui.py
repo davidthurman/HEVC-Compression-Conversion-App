@@ -5,6 +5,13 @@ from tkinter.filedialog import askopenfilename
 import pythonMagic.magic as magic
 import os
 import sys
+import threading
+
+def compressThreadFunction(fileName, speed):
+	os.system("time ffmpeg -threads 8 -i " + fileName + " -c:v libx265 -preset " + speed + " -quality 1 -c:a aac -b:a 128k -strict -2 " + fileName + "Compressed.mp4 -y")
+
+def convertThreadFunction(fileName):
+	os.system("ffmpeg -i " + fileName + " " + fileName + "." + newFileType)
 
 def makeReadable(myString):
 	print("QQQ")
@@ -46,7 +53,8 @@ def changeFileType(btn):
 	if newFileType != "None" and fileName != "filename":
 		app.setLabelBg("status", "Khaki")
 		app.setLabel("status", "Converting")
-		os.system("ffmpeg -i " + fileName + " " + fileName + "." + newFileType)
+		download_thread = threading.Thread(target=convertThreadFunction, args=[fileName, newFileType])
+		download_thread.start()
 		app.setLabel("status", "Converted")
 		app.setLabelBg("status", "LimeGreen")
 
@@ -59,9 +67,14 @@ def compress(btn):
 		print(fileType)
 		app.setLabel("status", "Compressing")
 		app.setLabelBg("status", "Khaki")
-		os.system("time ffmpeg -threads 8 -i " + fileName + " -c:v libx265 -preset " + speed + " -quality 1 -c:a aac -b:a 128k -strict -2 " + fileName + "Compressed.mp4 -y")
+		compressThread = threading.Thread(target=compressThreadFunction, args=[fileName, speed])
+		compressThread.start()
+		#os.system("time ffmpeg -threads 8 -i " + fileName + " -c:v libx265 -preset " + speed + " -quality 1 -c:a aac -b:a 128k -strict -2 " + fileName + "Compressed.mp4 -y")
 		app.setLabel("status", "Compressed")
 		app.setLabelBg("status", "LimeGreen")
+
+
+
 
 
 
