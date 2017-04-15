@@ -6,14 +6,38 @@ import pythonMagic.magic as magic
 import os
 import sys
 
+def makeReadable(myString):
+	print("QQQ")
+	print(myString)
+	myString = myString.replace(" ", "\ ")
+	myString = myString.replace("(", "\(")
+	myString = myString.replace(")", "\)")
+	myString = myString.replace("*", "\*")
+	myString = myString.replace("!", "\!")
+	myString = myString.replace("@", "\@")
+	myString = myString.replace("#", "\#")
+	myString = myString.replace("$", "\$")
+	myString = myString.replace("%", "\%")
+	myString = myString.replace("^", "\^")
+	myString = myString.replace("&", "\&")
+	myString = myString.replace("<", "\<")
+	myString = myString.replace(">", "\>")
+	myString = myString.replace("[", "\[")
+	myString = myString.replace("]", "\]")
+	myString = myString.replace("|", "\|")
+	myString = myString.replace("{", "\{")
+	myString = myString.replace("}", "\}")
+	print(myString)
+	return myString
+
 def chooseFile(btn):
 	Tk().withdraw() 
 	filename = askopenfilename()
+	filename = makeReadable(filename)
 	app.setLabel("fileName", str(filename))
 	mime = magic.Magic(mime=True)
 	mimeType = mime.from_file(filename)
 	test = (magic.Magic.guess_extension(mimeType))
-	print(test)
 	app.setLabel("currentFileType", mimeType)
 
 def changeFileType(btn):
@@ -38,6 +62,8 @@ def compress(btn):
 		os.system("time ffmpeg -threads 8 -i " + fileName + " -c:v libx265 -preset " + speed + " -quality 1 -c:a aac -b:a 128k -strict -2 " + fileName + "Compressed.mp4 -y")
 		app.setLabel("status", "Compressed")
 		app.setLabelBg("status", "LimeGreen")
+
+
 
 
 pwd = str(os.popen('pwd').read())
