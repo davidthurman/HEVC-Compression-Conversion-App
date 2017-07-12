@@ -15,17 +15,17 @@ https://ffmpeg.org/
 
 ## How to install it?
 
-1.Clone the repo (or download a zip)
+1. Clone the repo (or download a zip)
 ```
 Desktop user$ git clone https://github.com/davidthurman/HEVC-Compression-Conversion-App.git
 ```
 
-2.CD to the cloned directory
+2. CD to the cloned directory
 ```
 Desktop user$ cd HEVCApp/
 ```
 
-3.(Using brew) install libmagic
+3. (Using brew) install libmagic
 ```
 Desktop user$ brew install libmagic
 ```
@@ -35,7 +35,7 @@ Desktop user$ brew install libmagic
 Desktop user$ brew install ffmpeg --with-fdk-aac --with-tools --with-freetype --with-libass --with-libvorbis --with-libvpx --with-x265
 ```
 
-5.Run the program with Python3
+5. Run the program with Python3
 ```
 HEVCApp user$ python3 gui.py
 ```

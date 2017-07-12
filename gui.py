@@ -10,12 +10,10 @@ import threading
 def compressThreadFunction(fileName, speed):
 	os.system("time ffmpeg -threads 8 -i " + fileName + " -c:v libx265 -preset " + speed + " -quality 1 -c:a aac -b:a 128k -strict -2 " + fileName + "Compressed.mp4 -y")
 
-def convertThreadFunction(fileName):
+def convertThreadFunction(fileName, newFileType):
 	os.system("ffmpeg -i " + fileName + " " + fileName + "." + newFileType)
 
 def makeReadable(myString):
-	print("QQQ")
-	print(myString)
 	myString = myString.replace(" ", "\ ")
 	myString = myString.replace("(", "\(")
 	myString = myString.replace(")", "\)")
@@ -34,7 +32,6 @@ def makeReadable(myString):
 	myString = myString.replace("|", "\|")
 	myString = myString.replace("{", "\{")
 	myString = myString.replace("}", "\}")
-	print(myString)
 	return myString
 
 def chooseFile(btn):
@@ -77,13 +74,12 @@ def compress(btn):
 
 
 
-pwd = str(os.popen('pwd').read())
-path = str(os.popen('$PATH').read())
-if pwd in path:
-	print("Is In")
-else:
-	os.system("PATH=$PATH:$(pwd)")
-	print("Isnt")
+# pwd = str(os.popen('pwd').read())
+# path = str(os.popen('$PATH').read())
+# if pwd in path:
+# 	print()
+# else:
+# 	os.system("PATH=$PATH:$(pwd)")
 
 
 app = gui()
