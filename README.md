@@ -9,7 +9,7 @@
 
 This is an app that utilizes the power of FFMPEG to convert files from one type to another and compress files
 
-This app is all thanks to FFMPEG. You can find out everything about it here: 
+This app is all thanks to FFMPEG. You can find out everything about it here:
 https://ffmpeg.org/
 
 
@@ -25,7 +25,17 @@ Desktop user$ git clone https://github.com/davidthurman/HEVC-Compression-Convers
 Desktop user$ cd HEVCApp/
 ```
 
-3.Run the program with Python3
+3.(Using brew) install libmagic
+```
+Desktop user$ brew install libmagic
+```
+
+4. (Using brew) install FFMPEG
+```
+Desktop user$ brew install ffmpeg --with-fdk-aac --with-tools --with-freetype --with-libass --with-libvorbis --with-libvpx --with-x265
+```
+
+5.Run the program with Python3
 ```
 HEVCApp user$ python3 gui.py
 ```

@@ -38,13 +38,12 @@ def makeReadable(myString):
 	return myString
 
 def chooseFile(btn):
-	Tk().withdraw() 
+	Tk().withdraw()
 	filename = askopenfilename()
 	filename = makeReadable(filename)
 	app.setLabel("fileName", str(filename))
 	mime = magic.Magic(mime=True)
 	mimeType = mime.from_file(filename)
-	test = (magic.Magic.guess_extension(mimeType))
 	app.setLabel("currentFileType", mimeType)
 
 def changeFileType(btn):
@@ -69,7 +68,6 @@ def compress(btn):
 		app.setLabelBg("status", "Khaki")
 		compressThread = threading.Thread(target=compressThreadFunction, args=[fileName, speed])
 		compressThread.start()
-		#os.system("time ffmpeg -threads 8 -i " + fileName + " -c:v libx265 -preset " + speed + " -quality 1 -c:a aac -b:a 128k -strict -2 " + fileName + "Compressed.mp4 -y")
 		app.setLabel("status", "Compressed")
 		app.setLabelBg("status", "LimeGreen")
 
